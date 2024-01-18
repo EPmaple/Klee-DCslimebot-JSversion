@@ -1,8 +1,12 @@
 const { Events } = require('discord.js');
+const { CID_BOTTESTING_CHANNEL } = require('../config.json')
 
 module.exports = {
 	name: Events.InteractionCreate,
 	async execute(interaction) {
+    // Check if the interaction was in the desired channel
+    if (interaction.channelId !== CID_BOTTESTING_CHANNEL) return;
+
     if (interaction.isChatInputCommand()) {
       const command = interaction.client.commands.get(interaction.commandName);
 
